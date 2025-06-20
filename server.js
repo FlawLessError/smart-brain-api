@@ -12,19 +12,13 @@ const image = require("./controllers/image");
 const db = knex({
   // connect to your own database here:
   client: "pg",
-  connection: {
-    host: process.env.DB_APP_HOST,
-    port: process.env.DB_APP_PORT,
-    user: process.env.DB_APP_USER,
-    password: process.env.DB_APP_PASSWORD,
-    database: process.env.DB_APP_DATABASE,
-  },
+  connection: process.env.POSTGRES_URI,
 });
 
 const app = express();
 
 app.use(cors());
-// app.use(express.json()); // latest version of exressJS now comes with Body-Parser!
+app.use(express.json()); // latest version of exressJS now comes with Body-Parser!
 
 app.get("/", (req, res) => {
   res.send(db.users);
