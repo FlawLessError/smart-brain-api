@@ -24,6 +24,9 @@ services:
   postgres:
     container_name: "Database"
     build: ./postgres
+    volumes:
+      - ./postgres/tables/:/docker-entrypoint-initdb.d/tables/
+      # - ./postgres/deploy-schemas.sql/:/docker-entrypoint-initdb.d/
     environment:
       POSTGRES_HOST: postgres
       POSTGRES_USER: mark

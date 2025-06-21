@@ -1,9 +1,9 @@
 BEGIN TRANSACTION;
 
-  CREATE TABLE login (
+  CREATE TABLE IF NOT EXISTS login (
     id SERIAL PRIMARY KEY,
     hash VARCHAR(100) NOT NULL,
-    email text UNIQUE NOT NULL
+    email TEXT UNIQUE NOT NULl
   );
 
 COMMIT;
