@@ -15,6 +15,7 @@ services:
     # copies data from current
     # directory to /usr/src/smart-brain-api
     # and also rebuilds on save in local file sys
+    # maybe related to watch mode
     develop:
       watch:
         - action: rebuild
@@ -26,7 +27,7 @@ services:
     build: ./postgres
     volumes:
       - ./postgres/tables/:/docker-entrypoint-initdb.d/
-      # - ./postgres/deploy-schemas.sql/:/docker-entrypoint-initdb.d/
+      # Copies the tables that won't be copied used dockerfile
     environment:
       POSTGRES_HOST: postgres
       POSTGRES_USER: mark
